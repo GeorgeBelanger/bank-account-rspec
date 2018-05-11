@@ -18,7 +18,7 @@ class Account
   end
 
   def deposit!(amount) 
-    raise NegativeDepositError if amount < 0 
+    raise NegativeDepositError if amount <= 0 
     add_transaction(amount)
 
     balance
@@ -40,7 +40,7 @@ private
   end
 
   def valid_number?(number)
-    number.match /^\d{10}$/
+    number.to_s.match /^\d{10}$/
   end
 
   def add_transaction(amount)
